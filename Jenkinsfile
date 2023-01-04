@@ -3,7 +3,7 @@ pipeline {
  stages {
      
 
-      stage('Git Repo') {
+      stage('Get Repo') {
             steps {
                 git branch: 'main', url: 'https://github.com/YourAWS-Bilal/cicd'           
             }
