@@ -11,9 +11,7 @@ pipeline {
    
         stage('Git Repo') {
             steps {
-                sh 'sudo chmod 777 -R /var/jenkins_home/workspace/CICDWORKFLOW/'
-                git branch: 'main', url: 'https://github.com/YourAWS-Bilal/tiptopsite'
-             
+                git branch: 'main', url: 'https://github.com/YourAWS-Bilal/tiptopsite'           
             }
         }
         
@@ -25,8 +23,8 @@ pipeline {
         }
     stage('Testing') {
             steps {
-               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/'
-                 sh 'phpunit --log-junit /var/jenkins_home/workspace/testinglogs.xml'
+               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/ && ./vendor/bin/phpunitl UnitTestFiles/Test'
+                 
             }
         }
 
