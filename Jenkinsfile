@@ -13,7 +13,7 @@ pipeline {
             steps {
                sh 'sudo chmod 777 -R /var/run/docker.sock'
                sh 'sudo chmod 777 -R /var/jenkins_home/workspace/CICDWORKFLOW/'
-               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/docker && docker compose down --volumes'
+               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/docker && docker compose down'
             }
         }
    
