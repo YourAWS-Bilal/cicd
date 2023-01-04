@@ -5,6 +5,7 @@ pipeline {
 
       stage('Get Repo') {
             steps {
+                sh 'sudo rm -r /var/jenkins_home/workspace/CICDWORKFLOW/*'
                 git branch: 'main', url: 'https://github.com/YourAWS-Bilal/cicd'           
             }
         }     
@@ -21,12 +22,13 @@ pipeline {
     stage('Build UP') {
             steps {
                sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/docker && docker compose up -d --build'
+               sh 'docker exec -d project_php  php bin/console doctrine:schema:update --force --complete --dump-sql'
                 
             }
         }
     stage('Testing') {
             steps {
-               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW && ./vendor/bin/phpunitl UnitTestFiles/Test'
+               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW && ./vendor/bin/phpunit UnitTestFiles/Test'
             }
         }
 
