@@ -21,7 +21,8 @@ pipeline {
         
     stage('Build UP') {
             steps {
-               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/docker && docker compose up -d --build'                
+               sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/docker && docker compose up -d --build' 
+               sleep(time: 10, unit: "SECONDS")
             }
         }
     stage('Testing') {
