@@ -22,7 +22,6 @@ pipeline {
     stage('Build UP') {
             steps {
                sh 'cd /var/jenkins_home/workspace/CICDWORKFLOW/docker && docker compose up -d --build'
-               sh "docker exec project_php /bin/sh -c 'cd /usr/share/nginx/html && php bin/console doctrine:schema:update --force --complete --dump-sql' "
                 
             }
         }
