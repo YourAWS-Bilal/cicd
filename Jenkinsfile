@@ -1,6 +1,13 @@
 pipeline {
     agent any
  stages {
+     
+
+      stage('Git Repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/YourAWS-Bilal/cicd'           
+            }
+        }     
     stage('old build down') {
             steps {
                sh 'sudo chmod 777 -R /var/run/docker.sock'
@@ -9,11 +16,7 @@ pipeline {
             }
         }
    
-        stage('Git Repo') {
-            steps {
-                git branch: 'main', url: 'https://github.com/YourAWS-Bilal/tiptopsite'           
-            }
-        }
+
         
     stage('Build UP') {
             steps {
